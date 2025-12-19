@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://bnllj44e87jeq"]
 
-[ext_resource type="Texture2D" uid="uid://m4ub6oll4ikv" path="res://Assets/Invaders/Invader3-1.png" id="1_crrd5"]
 [ext_resource type="Script" uid="uid://bibym2d2lv5oi" path="res://Scenes/start_screen.gd" id="1_irgfa"]
 [ext_resource type="FontFile" uid="uid://ch103gi2tob72" path="res://Assets/font/andina.ttf" id="1_rgkik"]
-[ext_resource type="Texture2D" uid="uid://bn227mp3yqjlo" path="res://Assets/Invaders/Invader2-1.png" id="3_eknv1"]
-[ext_resource type="Texture2D" uid="uid://dy2h5dklc8h7p" path="res://Assets/Invaders/Invader1-1.png" id="4_n2r74"]
+[ext_resource type="Texture2D" uid="uid://bia753ad1l4xk" path="res://Assets/Invaders/Alien1-1.png" id="3_u4blk"]
+[ext_resource type="Texture2D" uid="uid://cathqx5f6604q" path="res://Assets/Invaders/Alien2-1.png" id="4_4cpmh"]
+[ext_resource type="Texture2D" uid="uid://mn4onwh50qxa" path="res://Assets/Invaders/Alien3-1.png" id="5_2rqn0"]
 
 [node name="StartScreen" type="CanvasLayer"]
 script = ExtResource("1_irgfa")
@@ -59,7 +59,7 @@ unique_name_in_owner = true
 texture_filter = 1
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-texture = ExtResource("1_crrd5")
+texture = ExtResource("3_u4blk")
 
 [node name="Invader1Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer/Invadercontainer_1"]
 unique_name_in_owner = true
@@ -82,7 +82,7 @@ custom_minimum_size = Vector2(80, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("3_eknv1")
+texture = ExtResource("4_4cpmh")
 
 [node name="Invader2Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer/Invadercontainer_2"]
 unique_name_in_owner = true
@@ -104,7 +104,7 @@ unique_name_in_owner = true
 texture_filter = 1
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-texture = ExtResource("4_n2r74")
+texture = ExtResource("5_2rqn0")
 
 [node name="Invader3Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer/Invadercontainer_3"]
 unique_name_in_owner = true

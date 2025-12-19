@@ -1,14 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://c71b88awx6l17"]
+[gd_scene load_steps=18 format=3 uid="uid://c71b88awx6l17"]
 
 [ext_resource type="Texture2D" uid="uid://dy2h5dklc8h7p" path="res://Assets/Invaders/Invader1-1.png" id="1_5bvy7"]
 [ext_resource type="Script" uid="uid://b2lygm8kk5h4e" path="res://Scenes/invader.gd" id="1_qiwfo"]
-[ext_resource type="Texture2D" uid="uid://b06nkmo0fwryx" path="res://Assets/Invaders/Invader1-2.png" id="3_0ml1a"]
-[ext_resource type="Texture2D" uid="uid://bn227mp3yqjlo" path="res://Assets/Invaders/Invader2-1.png" id="4_pfvh8"]
-[ext_resource type="Texture2D" uid="uid://gf81hnr41a4c" path="res://Assets/Invaders/Invader2-2.png" id="5_bc16m"]
-[ext_resource type="Texture2D" uid="uid://m4ub6oll4ikv" path="res://Assets/Invaders/Invader3-1.png" id="6_mbgd0"]
-[ext_resource type="Texture2D" uid="uid://bfg1tahjcdwb4" path="res://Assets/Invaders/Invader3-2.png" id="7_i5y0l"]
+[ext_resource type="Texture2D" uid="uid://mn4onwh50qxa" path="res://Assets/Invaders/Alien3-1.png" id="5_pfvh8"]
+[ext_resource type="Texture2D" uid="uid://bpmi8gjqsocss" path="res://Assets/Invaders/Alien3-2.png" id="6_bc16m"]
+[ext_resource type="Texture2D" uid="uid://cathqx5f6604q" path="res://Assets/Invaders/Alien2-1.png" id="7_mbgd0"]
 [ext_resource type="Texture2D" uid="uid://ctu8snp11c12t" path="res://Assets/Invaders/Invader-explosion-1.png" id="8_1xts3"]
+[ext_resource type="Texture2D" uid="uid://d243hdlr1fdq2" path="res://Assets/Invaders/Alien2-2.png" id="8_i5y0l"]
+[ext_resource type="Texture2D" uid="uid://bia753ad1l4xk" path="res://Assets/Invaders/Alien1-1.png" id="9_1xts3"]
 [ext_resource type="Texture2D" uid="uid://dcoy6mphlfi8i" path="res://Assets/Invaders/Invader-explosion-2.png" id="9_13rbj"]
+[ext_resource type="Texture2D" uid="uid://dh2egaletn3n0" path="res://Assets/Invaders/Alien1-2.png" id="10_13rbj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qiwfo"]
 radius = 4.0
@@ -57,7 +58,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("1_5bvy7"), ExtResource("3_0ml1a")]
+"values": [ExtResource("5_pfvh8"), ExtResource("6_bc16m")]
 }
 
 [sub_resource type="Animation" id="Animation_ft5by"]
@@ -73,7 +74,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("4_pfvh8"), ExtResource("5_bc16m")]
+"values": [ExtResource("7_mbgd0"), ExtResource("8_i5y0l")]
 }
 
 [sub_resource type="Animation" id="Animation_u3vg4"]
@@ -89,7 +90,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("6_mbgd0"), ExtResource("7_i5y0l")]
+"values": [ExtResource("9_1xts3"), ExtResource("10_13rbj")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7mkux"]

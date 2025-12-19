@@ -56,20 +56,20 @@ func start_wave():
 
 func spawn_grid(rows: int, cols :int):
 	invader_total_count = rows * cols
-	var invader_1_res = preload("res://Resources/invader_1.tres")
-	var invader_2_res = preload("res://Resources/invader_2.tres")
-	var invader_3_res = preload("res://Resources/invader_3.tres")
+	var alien1_res = preload("res://Resources/alien_1.tres")
+	var alien2_res = preload("res://Resources/alien_2.tres")
+	var alien3_res = preload("res://Resources/alien_3.tres")
 	
 	var screen_width = get_viewport_rect().size.x
 	var invader_config
 	
 	for col in cols:
 		if col == 0:
-			invader_config = invader_3_res
+			invader_config = alien3_res
 		elif col == 1 || col == 2:
-			invader_config = invader_2_res
+			invader_config = alien2_res
 		else:
-			invader_config = invader_1_res
+			invader_config = alien1_res
 		
 		for row in rows:
 			var x = (screen_width - 850) + (col * (invader_config.width + HORIZONTAL_SPACING))
