@@ -2,7 +2,10 @@ extends Area2D
 
 class_name FinalBoss
 
-@export var health: int = 20
+signal health_changed(new_health)
+
+@export var max_health: int = 20
+var health: int = max_health
 @onready var fire_timer: Timer =Timer.new()
 var shot_scene =preload("res://Scenes/invader_shot.tscn")
 
@@ -11,6 +14,8 @@ func _ready() -> void:
 	fire_timer.wait_time = 1.2
 	fire_timer.timeout.connect(_on_fire_timeout)
 	fire_timer.start()
+	health = max_health
+	health_changed.emit(health)
 
 func _on_fire_timeout():
 	spawn_shot(Vector2(-1, 0))
@@ -39,9 +44,10 @@ func _on_area_entered(area: Area2D) -> void:
 			area.queue_free() # Destroy the laser that hit us
 
 func take_damage(amount: int):
-	health -= amount
-	# Visual feedback: Flash red
 	fire_timer.wait_time = clamp(fire_timer.wait_time - 0.05, 0.4, 1.2)
+	health -= amount
+	health_changed.emit(health)
+	# Visual feedback: Flash red
 	modulate = Color.RED
 	await get_tree().create_timer(0.05).timeout
 	modulate = Color.WHITE

@@ -1,7 +1,7 @@
 extends Node2D
 
 class_name InvaderSpawner
-
+@onready var boss_hp_bar = get_tree().root.find_child("BossHPBar", true, false)
 @export var boss_scene: PackedScene
 
 signal invader_destroyed(points: int)
@@ -148,21 +148,27 @@ func spawn_boss_wave():
 	position = Vector2.ZERO 
 	movement_timer.start()
 	shot_timer.wait_time = 0.8
-	shot_timer.start()
+	shot_timer.stop()
 	
 	print("WAVE 3 STARTING: Spawning Boss...")
 	await get_tree().create_timer(2.0).timeout
+	
 	
 	if boss_scene:
 		var boss = boss_scene.instantiate()
 		add_child(boss)
 		
+		if boss_hp_bar:
+			boss_hp_bar.max_value = boss.max_health
+			boss_hp_bar.value = boss.max_health
+			boss_hp_bar.show()
+			boss.health_changed.connect(func(new_hp): boss_hp_bar.value = new_hp)
+			
+			boss.tree_exited.connect(func(): boss_hp_bar.hide())
 		# Position him where your invaders usually start
 		var screen_width = get_viewport_rect().size.x
 		boss.position = Vector2(screen_width - 850, 200)
 		
 		boss.tree_exited.connect(_on_boss_killed)
-		
-		print("Boss spawned at local position: ", boss.position)
 	else:
 		print("ERROR: Boss Scene is not assigned!")

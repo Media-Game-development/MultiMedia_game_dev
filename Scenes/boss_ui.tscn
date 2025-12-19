@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0u7o3vd15fws"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajy4x"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_335gi"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="BossUI" type="CanvasLayer"]
+
+[node name="BossHPBar" type="ProgressBar" parent="."]
+visible = false
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(0, -70)
+size_flags_horizontal = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_ajy4x")
+theme_override_styles/fill = SubResource("StyleBoxFlat_335gi")
+show_percentage = false
