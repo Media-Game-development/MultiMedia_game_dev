@@ -1,19 +1,69 @@
-[gd_scene load_steps=4 format=3 uid="uid://clu4hncvu67s6"]
+[gd_scene load_steps=9 format=3 uid="uid://clu4hncvu67s6"]
 
 [ext_resource type="PackedScene" uid="uid://p3yjlskduums" path="res://Scenes/player.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://boc4asut4djmp" path="res://Scenes/bullet_catcher.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://dh568v5fqhmu8" path="res://Scenes/invader_spawner.tscn" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://cmf0ls5j4ngl" path="res://Scenes/life_manager.gd" id="5_kry3j"]
+[ext_resource type="Script" uid="uid://dfifg1lihubo4" path="res://Scenes/points_counter.gd" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://cfvhv0fm2qs3s" path="res://Scenes/ui.tscn" id="7_6bp64"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
+size = Vector2(35.99994, 1160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvhh"]
+size = Vector2(662, 50)
 
 [node name="main" type="Node"]
 
-[node name="player" parent="." instance=ExtResource("1_jjgbg")]
-position = Vector2(0, 302)
-scale = Vector2(4, 4)
+[node name="Player" parent="." instance=ExtResource("1_jjgbg")]
+position = Vector2(-541, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="BulletCatcher" parent="." instance=ExtResource("2_bo1nx")]
-position = Vector2(0, -311)
+position = Vector2(579, 240)
+rotation = 1.5707964
 
 [node name="InvaderSpawner" parent="." instance=ExtResource("3_8gbba")]
 position = Vector2(0, -190)
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="UpperWall" type="Area2D" parent="Walls"]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/UpperWall"]
+position = Vector2(2, -322)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_8gbba")
+
+[node name="BottomWall" type="Area2D" parent="Walls"]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall"]
+position = Vector2(-4, 320)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_8gbba")
+
+[node name="LeftWall" type="Area2D" parent="Walls"]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall"]
+position = Vector2(-547, 7)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_jjvhh")
+
+[node name="LifeManager" type="Node" parent="."]
+script = ExtResource("5_kry3j")
+
+[node name="PointsCounter" type="Node" parent="."]
+script = ExtResource("6_21xkr")
+
+[node name="UI" parent="." instance=ExtResource("7_6bp64")]
+
+[connection signal="area_entered" from="Walls/UpperWall" to="InvaderSpawner" method="_on_left_wall_area_entered"]
+[connection signal="area_entered" from="Walls/BottomWall" to="InvaderSpawner" method="_on_right_wall_area_entered"]
+[connection signal="area_entered" from="Walls/LeftWall" to="InvaderSpawner" method="_on_bottom_wall_area_entered"]

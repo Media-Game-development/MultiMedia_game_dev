@@ -2,7 +2,8 @@ extends Area2D
 
 class_name Laser
 
-@export var speed = 300
+@export var speed = 500
+@export var direction = -1
 
 func _process(delta):
-	position.y -= delta * speed
+	position.x -= delta * direction * speed
