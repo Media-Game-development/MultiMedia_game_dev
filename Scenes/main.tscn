@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://clu4hncvu67s6"]
+[gd_scene load_steps=10 format=3 uid="uid://clu4hncvu67s6"]
 
 [ext_resource type="PackedScene" uid="uid://p3yjlskduums" path="res://Scenes/player.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://boc4asut4djmp" path="res://Scenes/bullet_catcher.tscn" id="2_bo1nx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cmf0ls5j4ngl" path="res://Scenes/life_manager.gd" id="5_kry3j"]
 [ext_resource type="Script" uid="uid://dfifg1lihubo4" path="res://Scenes/points_counter.gd" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://cfvhv0fm2qs3s" path="res://Scenes/ui.tscn" id="7_6bp64"]
+[ext_resource type="PackedScene" uid="uid://bbn03rvggx2dn" path="res://Scenes/boss.tscn" id="7_344ge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
 size = Vector2(35.99994, 1160)
@@ -26,6 +27,7 @@ rotation = 1.5707964
 
 [node name="InvaderSpawner" parent="." instance=ExtResource("3_8gbba")]
 position = Vector2(0, -190)
+boss_scene = ExtResource("7_344ge")
 
 [node name="Walls" type="Node" parent="."]
 

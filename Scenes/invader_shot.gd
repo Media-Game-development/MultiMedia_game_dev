@@ -5,7 +5,7 @@ class_name InvaderShot
 @export var speed = 200
 
 func _process(delta: float) -> void:
-	position.x -= speed * delta
+	global_position.x -= speed * delta
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
