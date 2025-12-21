@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnllj44e87jeq"]
+[gd_scene load_steps=7 format=3 uid="uid://bnllj44e87jeq"]
 
 [ext_resource type="Script" uid="uid://bibym2d2lv5oi" path="res://Scenes/start_screen.gd" id="1_irgfa"]
 [ext_resource type="FontFile" uid="uid://ch103gi2tob72" path="res://Assets/font/andina.ttf" id="1_rgkik"]
 [ext_resource type="Texture2D" uid="uid://bia753ad1l4xk" path="res://Assets/Invaders/Alien1-1.png" id="3_u4blk"]
 [ext_resource type="Texture2D" uid="uid://cathqx5f6604q" path="res://Assets/Invaders/Alien2-1.png" id="4_4cpmh"]
 [ext_resource type="Texture2D" uid="uid://mn4onwh50qxa" path="res://Assets/Invaders/Alien3-1.png" id="5_2rqn0"]
+[ext_resource type="Texture2D" uid="uid://detl7lem2515b" path="res://Assets/Background/background.png" id="6_4cpmh"]
 
 [node name="StartScreen" type="CanvasLayer"]
 script = ExtResource("1_irgfa")
@@ -126,6 +127,13 @@ text = "PLAY SPACE INVADERS"
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.75
 autostart = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(576, 324.00003)
+scale = Vector2(1.1999999, 1.1962963)
+texture = ExtResource("6_4cpmh")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/Button" to="." method="load_game"]
 [connection signal="timeout" from="Timer" to="." method="show_next_control"]
