@@ -127,7 +127,7 @@ func on_invader_shot ():
 
 func on_invader_destroyed(points: int):
 	if invader_explosion_sound:
-		invader_explosion_sound.pitch_scale = randf_range(0.9, 1.2) # Adds variety
+		invader_explosion_sound.pitch_scale = randf_range(0.9, 1.2)
 		invader_explosion_sound.play()
 	
 	invader_destroyed.emit(points)
@@ -154,7 +154,7 @@ func  _on_boss_killed ():
 func spawn_boss_wave():
 	current_wave = 3
 	invader_total_count = 1
-	# 1. Reset spawner position to the top-right start area
+
 	position = Vector2.ZERO 
 	movement_timer.start()
 	shot_timer.wait_time = 0.8
@@ -178,7 +178,7 @@ func spawn_boss_wave():
 			boss.health_changed.connect(func(new_hp): boss_hp_bar.value = new_hp)
 			
 			boss.tree_exited.connect(func(): boss_hp_bar.hide())
-		# Position him where your invaders usually start
+
 		var screen_width = get_viewport_rect().size.x
 		boss.position = Vector2(screen_width - 850, 200)
 		

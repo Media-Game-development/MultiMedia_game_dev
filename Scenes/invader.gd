@@ -10,7 +10,7 @@ signal invader_destroyed(points: int)
 
 var config:Resource
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	sprite_2d.texture= config.sprite
 	animation_player.play(config.animation_name)

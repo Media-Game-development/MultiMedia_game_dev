@@ -42,14 +42,13 @@ func spawn_shot(dir: Vector2):
 
 
 func _on_area_entered(area: Area2D) -> void:
-	# This assumes your player's laser is named "Laser" or has a script
 	if area is Laser:
 		take_damage(1)
 		if area.has_method("queue_free"):
-			area.queue_free() # Destroy the laser that hit us
+			area.queue_free()
 
 func take_damage(amount: int):
-	#fire_timer.wait_time = clamp(fire_timer.wait_time - 0.05, 0.4, 1.2)
+	fire_timer.wait_time = clamp(fire_timer.wait_time - 0.05, 0.4, 1.2)
 	health -= amount
 	health_changed.emit(health)
 	# Visual feedback: Flash red
@@ -61,4 +60,4 @@ func take_damage(amount: int):
 	$HitSoundEffect.play()
 	
 	if health <= 0:
-		queue_free() # This triggers the 'tree_exited' signal in the spawner
+		queue_free()
