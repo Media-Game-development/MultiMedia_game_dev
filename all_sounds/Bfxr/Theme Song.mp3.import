@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://clc1b2xnggect"
+path="res://.godot/imported/Theme Song.mp3-4cad09e8ba78c0452d05ff4e345e8572.mp3str"
+
+[deps]
+
+source_file="res://all_sounds/Bfxr/Theme Song.mp3"
+dest_files=["res://.godot/imported/Theme Song.mp3-4cad09e8ba78c0452d05ff4e345e8572.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

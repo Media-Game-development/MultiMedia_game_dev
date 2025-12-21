@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var life_texture = preload("res://Assets/Player/Player.png")
+var life_texture = preload("res://Assets/Player/Spaceship2.png")
 
 @onready var lifes_ui_container: HBoxContainer = $MarginContainer/HBoxContainer
 @onready var points_label: Label = $MarginContainer/Points

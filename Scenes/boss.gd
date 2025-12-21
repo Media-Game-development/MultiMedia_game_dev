@@ -4,6 +4,10 @@ class_name FinalBoss
 
 signal health_changed(new_health)
 
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+var config:Resource
+
 @export var max_health: int = 20
 var health: int = max_health
 @onready var fire_timer: Timer =Timer.new()
@@ -16,6 +20,7 @@ func _ready() -> void:
 	fire_timer.start()
 	health = max_health
 	health_changed.emit(health)
+	
 
 func _on_fire_timeout():
 	spawn_shot(Vector2(-1, 0))
@@ -51,6 +56,9 @@ func take_damage(amount: int):
 	modulate = Color.RED
 	await get_tree().create_timer(0.05).timeout
 	modulate = Color.WHITE
+	
+	$HitSoundEffect.pitch_scale = randf_range(0.8, 1.2) 
+	$HitSoundEffect.play()
 	
 	if health <= 0:
 		queue_free() # This triggers the 'tree_exited' signal in the spawner

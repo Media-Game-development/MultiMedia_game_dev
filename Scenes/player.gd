@@ -55,3 +55,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		await get_tree().create_timer(1).timeout
 		player_destroyed.emit()
 		queue_free()
+
+func play_shoot_sound():
+	if has_node("LaserFiring"):
+		$LaserFiring.play()

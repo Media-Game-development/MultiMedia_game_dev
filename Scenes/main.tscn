@@ -1,14 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://clu4hncvu67s6"]
+[gd_scene load_steps=14 format=3 uid="uid://clu4hncvu67s6"]
 
 [ext_resource type="PackedScene" uid="uid://p3yjlskduums" path="res://Scenes/player.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://boc4asut4djmp" path="res://Scenes/bullet_catcher.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://dh568v5fqhmu8" path="res://Scenes/invader_spawner.tscn" id="3_8gbba"]
+[ext_resource type="AudioStream" uid="uid://bl8b6dvbb35qx" path="res://all_sounds/Bfxr/Boom.wav" id="5_hptm8"]
 [ext_resource type="Script" uid="uid://cmf0ls5j4ngl" path="res://Scenes/life_manager.gd" id="5_kry3j"]
 [ext_resource type="Script" uid="uid://dfifg1lihubo4" path="res://Scenes/points_counter.gd" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://cfvhv0fm2qs3s" path="res://Scenes/ui.tscn" id="7_6bp64"]
 [ext_resource type="PackedScene" uid="uid://bbn03rvggx2dn" path="res://Scenes/boss.tscn" id="7_344ge"]
 [ext_resource type="PackedScene" uid="uid://c0u7o3vd15fws" path="res://Scenes/boss_ui.tscn" id="8_344ge"]
 [ext_resource type="Texture2D" uid="uid://detl7lem2515b" path="res://Assets/Background/background.png" id="9_ynf5e"]
+[ext_resource type="AudioStream" uid="uid://clc1b2xnggect" path="res://all_sounds/Bfxr/Theme Song.mp3" id="11_d1ilt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
 size = Vector2(35.99994, 1160)
@@ -30,6 +32,10 @@ rotation = 1.5707964
 [node name="InvaderSpawner" parent="." instance=ExtResource("3_8gbba")]
 position = Vector2(0, -190)
 boss_scene = ExtResource("7_344ge")
+
+[node name="InvaderDestroyedSound" type="AudioStreamPlayer2D" parent="InvaderSpawner"]
+stream = ExtResource("5_hptm8")
+max_polyphony = 5
 
 [node name="Walls" type="Node" parent="."]
 
@@ -76,6 +82,10 @@ script = ExtResource("6_21xkr")
 position = Vector2(575, 323)
 scale = Vector2(1.1989583, 1.1981481)
 texture = ExtResource("9_ynf5e")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_d1ilt")
+autoplay = true
 
 [connection signal="area_entered" from="Walls/UpperWall" to="InvaderSpawner" method="_on_left_wall_area_entered"]
 [connection signal="area_entered" from="Walls/BottomWall" to="InvaderSpawner" method="_on_right_wall_area_entered"]

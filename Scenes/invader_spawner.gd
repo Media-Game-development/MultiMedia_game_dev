@@ -1,8 +1,7 @@
 extends Node2D
 
 class_name InvaderSpawner
-@onready var boss_hp_bar = get_tree().root.find_child("BossHPBar", true, false)
-@export var boss_scene: PackedScene
+
 
 signal invader_destroyed(points: int)
 signal game_won
@@ -12,7 +11,7 @@ signal game_lost
 #SpawnerConfiguration
 const ROWS = 1
 const COLUMNS = 1
-const HORIZONTAL_SPACING = 45
+const HORIZONTAL_SPACING = 80
 const VERTICAL_SPACING = 45
 const INVADER_WIDTH = 30
 const START_X_POSITION = 1000
@@ -32,8 +31,12 @@ var invader_total_count = ROWS * COLUMNS
 
 
 #NODE REFERENCES
+@onready var music_player: AudioStreamPlayer = get_tree().root.find_child("BackgroundMusic", true, false)
+@onready var boss_hp_bar = get_tree().root.find_child("BossHPBar", true, false)
+@export var boss_scene: PackedScene
 @onready var movement_timer: Timer = $MovementTimer
 @onready var shot_timer: Timer = $ShotTimer
+@onready var invader_explosion_sound: AudioStreamPlayer2D = $InvaderDestroyedSound
 
 
 func _ready() -> void:
@@ -72,7 +75,7 @@ func spawn_grid(rows: int, cols :int):
 			invader_config = alien1_res
 		
 		for row in rows:
-			var x = (screen_width - 850) + (col * (invader_config.width + HORIZONTAL_SPACING))
+			var x = (screen_width - 1000) + (col * (invader_config.width + HORIZONTAL_SPACING))
 			var y = 100 + (row * (INVADER_WIDTH + VERTICAL_SPACING))
 			var spawn_position = Vector2(x, y)
 			
@@ -123,6 +126,10 @@ func on_invader_shot ():
 		get_tree().root.add_child(invader_shot)
 
 func on_invader_destroyed(points: int):
+	if invader_explosion_sound:
+		invader_explosion_sound.pitch_scale = randf_range(0.9, 1.2) # Adds variety
+		invader_explosion_sound.play()
+	
 	invader_destroyed.emit(points)
 	invader_destroyed_count += 1
 	
