@@ -9,8 +9,8 @@ signal game_lost
 
 
 #SpawnerConfiguration
-const ROWS = 1
-const COLUMNS = 1
+const ROWS = 4
+const COLUMNS = 4
 const HORIZONTAL_SPACING = 80
 const VERTICAL_SPACING = 45
 const INVADER_WIDTH = 30
@@ -140,14 +140,17 @@ func on_invader_destroyed(points: int):
 			start_wave()
 
 func  _on_boss_killed ():
-		game_won.emit()
-		shot_timer.stop()
-		movement_timer.stop()
-		movement_direction = 0
-		
+	game_won.emit()
+	shot_timer.stop()
+	movement_timer.stop()
+	movement_direction = 0
+	if music_player:
+		music_player.stop()
+	var victory_sound = get_tree().root.find_child("VictoryBGM", true, false)
+	if victory_sound:
+		victory_sound.play()
 
 
-	
 func spawn_boss_wave():
 	current_wave = 3
 	invader_total_count = 1
@@ -158,6 +161,9 @@ func spawn_boss_wave():
 	shot_timer.stop()
 	
 	print("WAVE 3 STARTING: Spawning Boss...")
+	var music_player = get_parent().get_node_or_null("BackgroundMusic")
+	if music_player:
+		music_player.pitch_scale = 1.2
 	await get_tree().create_timer(2.0).timeout
 	
 	

@@ -11,6 +11,7 @@ var life_texture = preload("res://Assets/Player/Spaceship2.png")
 @onready var game_over_label: Label = %GameOverLabel
 @onready var game_over_button: Button = %GameOverButton
 @onready var game_over_container: CenterContainer = $MarginContainer/GameOverContainer
+@onready var menu_button: Button = $menu_button
 
 
 
@@ -21,6 +22,8 @@ func _ready():
 	invader_spawner.game_won.connect(on_game_won)
 	game_over_button.pressed.connect(on_restart_button_pressed)
 	life_manager.life_lost.connect(on_life_lost)
+	if menu_button:
+		menu_button.pressed.connect(on_menu_button_pressed)
 
 	for i in range(life_manager.lifes):
 		var life_texture_rect = TextureRect.new()
@@ -51,3 +54,7 @@ func on_life_lost(lifes_left: int):
 		life_texture_rect.queue_free()
 	else:
 		on_game_lost()
+
+func on_menu_button_pressed():
+	get_tree().change_scene_to_file("res://Scenes/start_screen.tscn")
+	

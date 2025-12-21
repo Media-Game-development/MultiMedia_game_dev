@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://clu4hncvu67s6"]
+[gd_scene load_steps=16 format=3 uid="uid://clu4hncvu67s6"]
 
 [ext_resource type="PackedScene" uid="uid://p3yjlskduums" path="res://Scenes/player.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://boc4asut4djmp" path="res://Scenes/bullet_catcher.tscn" id="2_bo1nx"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://c0u7o3vd15fws" path="res://Scenes/boss_ui.tscn" id="8_344ge"]
 [ext_resource type="Texture2D" uid="uid://detl7lem2515b" path="res://Assets/Background/background.png" id="9_ynf5e"]
 [ext_resource type="AudioStream" uid="uid://clc1b2xnggect" path="res://all_sounds/Bfxr/Theme Song.mp3" id="11_d1ilt"]
+[ext_resource type="AudioStream" uid="uid://b1tisa1p4nlmv" path="res://all_sounds/Bfxr/VictorySound.mp3" id="12_6iyac"]
+[ext_resource type="AudioStream" uid="uid://dyla0s8k1j5q" path="res://all_sounds/Bfxr/GameOverBGM.mp3" id="13_fdnlq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
 size = Vector2(35.99994, 1160)
@@ -86,6 +88,15 @@ texture = ExtResource("9_ynf5e")
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_d1ilt")
 autoplay = true
+bus = &"Music"
+
+[node name="VictoryBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_6iyac")
+bus = &"Music"
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_fdnlq")
+bus = &"Music"
 
 [connection signal="area_entered" from="Walls/UpperWall" to="InvaderSpawner" method="_on_left_wall_area_entered"]
 [connection signal="area_entered" from="Walls/BottomWall" to="InvaderSpawner" method="_on_right_wall_area_entered"]

@@ -57,3 +57,13 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nf4gj")
 text = "RESTART"
+
+[node name="menu_button" type="Button" parent="."]
+offset_left = 511.0
+offset_top = 8.0
+offset_right = 672.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0.101960786, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_jxero")
+theme_override_font_sizes/font_size = 26
+text = "MAINMENU"

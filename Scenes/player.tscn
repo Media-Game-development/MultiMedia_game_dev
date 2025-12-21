@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://p3yjlskduums"]
+[gd_scene load_steps=14 format=3 uid="uid://p3yjlskduums"]
 
 [ext_resource type="Script" uid="uid://2qksjbs4cr1y" path="res://Scenes/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://da5e5ye8epuk8" path="res://Assets/Player/Spaceship2.png" id="2_3smsa"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b4mk25ro2nqtu" path="res://Assets/Player/Player-explosion2.png" id="6_8erm5"]
 [ext_resource type="Texture2D" uid="uid://dsg2krqtkgnca" path="res://Assets/Player/Player-explosion3.png" id="7_f1ek2"]
 [ext_resource type="AudioStream" uid="uid://cp5dof80kwitm" path="res://all_sounds/Bfxr/Shoot6.wav" id="8_8erm5"]
+[ext_resource type="AudioStream" uid="uid://q6rrvl6h1e6d" path="res://all_sounds/Bfxr/DeathPlayerSound.mp3" id="9_f1ek2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0iea"]
 size = Vector2(16, 12.5)
@@ -74,5 +75,8 @@ libraries = {
 
 [node name="LaserFiring" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_8erm5")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_f1ek2")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

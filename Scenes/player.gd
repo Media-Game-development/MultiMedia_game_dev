@@ -48,6 +48,8 @@ func _process(delta: float) -> void:
 func on_player_destroyed():
 	speed = 0
 	animation_player.play("destroy")
+	if has_node("DeathSound"):
+		$DeathSound.play()
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
